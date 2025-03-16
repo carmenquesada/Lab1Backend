@@ -2,15 +2,15 @@ import { Restaurant, RestaurantCategory } from '../models/models.js'
 
 const index = async function (req, res) {
   try {
-    const restaurants = await Restaurant.findAll(
+    const restaurants = await Restaurant.findAll( // Busca todos los registros de Restaurant
       {
-        attributes: { exclude: ['userId'] },
+        attributes: { exclude: ['userId'] }, // Exluye userId para no mostrarlo en respuesta
         include:
       {
-        model: RestaurantCategory,
+        model: RestaurantCategory, // Incluye los datos de RestaurantCategory
         as: 'restaurantCategory'
       },
-        order: [[{ model: RestaurantCategory, as: 'restaurantCategory' }, 'name', 'ASC']]
+        order: [[{ model: RestaurantCategory, as: 'restaurantCategory' }, 'name', 'ASC']] // Ordenar por el campo name 
       }
     )
     res.json(restaurants)
