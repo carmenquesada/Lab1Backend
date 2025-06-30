@@ -10,7 +10,7 @@ const index = async function (req, res) {
         model: RestaurantCategory, // Incluye los datos de RestaurantCategory
         as: 'restaurantCategory'
       },
-        order: [[{ model: RestaurantCategory, as: 'restaurantCategory' }, 'name', 'ASC']] // Ordenar por el campo name 
+        order: [[{ model: RestaurantCategory, as: 'restaurantCategory' }, 'name', 'ASC']] // Ordenar por el campo name
       }
     )
     res.json(restaurants)
